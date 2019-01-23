@@ -1,0 +1,3 @@
+export const DATA_IS_FETCHING = ' DATA_IS_FETCHING';
+export const DATA_SUCCESS = 'DATA_SUCCESS';
+export const DATA_LOAD_ERROR = 'DATA_LOAD_ERROR';

@@ -1,5 +1,4 @@
 {   
-    "extends": "airbnb",
     "parser": "babel-eslint",
     "env": {
       "browser": true,
@@ -18,7 +17,7 @@
       "module": true
     },
     "rules": {
-      
+      "linebreak-style": 0,
       "react/display-name": 0,
       "react/jsx-boolean-value": 1,
       "react/jsx-closing-bracket-location": 0,
