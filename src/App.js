@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchDataFromServer } from './actions/dataActions';
+import { MeinSectionDivSV } from './lib/styledComponents';
 import './App.css';
 import BuildingView from './components/BuildingView';
 
 class App extends Component {
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.fetchDataFromServer();
   }
 
@@ -21,12 +22,12 @@ class App extends Component {
 
     return (
 
-        <div>
-          <h2>Welcome</h2>
-          { isFetching && <p>Loading...</p>}
-          { fetchingError && <p>Error, reload page...</p>}
-          {buildingView}
-        </div>
+      <MeinSectionDivSV>
+        <h2>Welcome</h2>
+        { isFetching && <p>Loading...</p>}
+        { fetchingError && <p>Error, reload page...</p>}
+        {buildingView}
+      </MeinSectionDivSV>
 
     );
   }
@@ -38,14 +39,14 @@ const mapStateToProps = (state) => {
   return {
     isFetching: state.isFetching,
     fetchingError: state.fetchingError,
-    buildingsData: state.buildingsData
+    buildingsData: state.buildingsData,
   };
 };
 
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchDataFromServer: () => {dispatch(fetchDataFromServer());},
+    fetchDataFromServer: () => { dispatch(fetchDataFromServer()); },
   };
 };
 
