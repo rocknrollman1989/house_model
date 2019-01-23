@@ -2,24 +2,30 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchDataFromServer } from './actions/dataActions';
 import './App.css';
-import BuildingsView from './components/BuildingsView';
+import BuildingView from './components/BuildingView';
 
 class App extends Component {
 
   componentDidMount(){
-    this.props.fetchDataFromServer()
+    this.props.fetchDataFromServer();
   }
 
   render() {
     const { isFetching, fetchingError, buildingsData } = this.props;
 
+    const buildingView = buildingsData && buildingsData.length > 0 ? buildingsData.map((item, i) => {
+      return (
+        <BuildingView key={i} buildingToShow={item}/>
+      );
+    }) : <p>all buildings saled:)</p>;
+
     return (
 
-      <div>
-        <h2>Welcome</h2>
+        <div>
+          <h2>Welcome</h2>
           { isFetching && <p>Loading...</p>}
           { fetchingError && <p>Error, reload page...</p>}
-          <BuildingsView buildingsData={buildingsData}/>
+          {buildingView}
         </div>
 
     );
