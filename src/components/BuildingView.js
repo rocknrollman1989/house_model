@@ -1,23 +1,34 @@
 import React from 'react';
-import { ContainerForOneItemSC, ContainerForPhoto } from '../lib/styledComponents';
+import { ContainerForOneItemSC, ContainerForPhoto, TextInImageSC } from '../lib/styledComponents';
 
 
 export default class BuildingView extends React.Component {
 
     createTagsForImage = (isImage) => {
+      if (isImage.hasOwnProperty('children')) {
+        return (<ContainerForPhoto key={1}>
+          {isImage.images.map((img, i) => {
+            return (
+              <div key={img}>
+                <img src={img} alt={img} key={img} />
+                <TextInImageSC>{this.toStreamlineComponents(isImage.children)}</TextInImageSC>
+              </div>
+            );
+          })}
+        </ContainerForPhoto>)
+      }
       if (isImage.constructor === Array) { 
-        return <ContainerForPhoto>
+        return <ContainerForPhoto key={isImage.length}>
           {isImage.map((img, i) => {
             return (
-              <div key={i}>
-                <img src={img} alt={img} />
+              <div key={img}>
+                <img src={img} alt={img} key={img} />
               </div>
             );
           })}
         </ContainerForPhoto>;
       }
-
-      this.toStreamlineComponents(isImage);
+      return this.toStreamlineComponents(isImage);
     }
 
 toStreamlineComponents = (componentProps) => {

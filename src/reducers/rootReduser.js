@@ -19,7 +19,7 @@ const rootReduser = (state = initialState, action) => {
         return {
             ...state,
             isFetching: false,
-            buildingsData: action.data.data
+            buildingsData: action.data.data,
         };
         case DATA_LOAD_ERROR:
         return {

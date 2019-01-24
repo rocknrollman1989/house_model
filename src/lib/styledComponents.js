@@ -34,6 +34,7 @@ export const ContainerForOneItemSC = styled.div`
             height: 160px;
             cursor:pointer;
             transition: 1s;
+            z-index: 3;
         }
         img:hover{
             position: absolute;
@@ -51,4 +52,13 @@ export const ContainerForPhoto = styled.div`
     flex-direction: row;
     justify-content: center;
     position: relative;
+`;
+
+export const TextInImageSC = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    margin-left: 10px;
+
 `;
